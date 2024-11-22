@@ -22,21 +22,11 @@ console.log("Port number is : ", PORT);
 app.use(express.json());
 app.use(cookieParser());
 
-<<<<<<< HEAD
-app.use(
-  cors({
-    origin: "https://academix-1-frontend.onrender.com",
-    credentials: true,
-  })
-);
-
-=======
 app.use(cors({
     origin:"https://academix-1-frontend.onrender.com",
     credentials:true
 }));
  
->>>>>>> 01a14b37b03e661663f5bf8ef2180f27ea3b9513
 // apis
 app.use("/api/v1/media", mediaRoute);
 app.use("/api/v1/user", userRoute);
