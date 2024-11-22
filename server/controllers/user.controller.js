@@ -12,48 +12,12 @@ export const register = async (req, res) => {
         message: "All fields are required.",
       });
     }
-<<<<<<< HEAD
     const user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({
         success: false,
         message: "User already exist with this email.",
       });
-=======
-}
-export const login = async (req,res) => {
-    try {
-        console.log("I am Inside");
-        const {email, password} = req.body;
-        if(!email || !password){
-            return res.status(400).json({
-                success:false,
-                message:"All fields are required."
-            })
-        }
-        const user = await User.findOne({email});
-        if(!user){
-            return res.status(400).json({
-                success:false,
-                message:"Incorrect email or password"
-            })
-        }
-        const isPasswordMatch = await bcrypt.compare(password, user.password);
-        if(!isPasswordMatch){
-            return res.status(400).json({
-                success:false,
-                message:"Incorrect email or password"
-            });
-        }
-        generateToken(res, user, `Welcome back ${user.name}`);
-
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            success:false,
-            message:"Failed to login"
-        })
->>>>>>> 01a14b37b03e661663f5bf8ef2180f27ea3b9513
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     await User.create({
@@ -97,7 +61,6 @@ export const login = async (req, res) => {
         message: "Incorrect email or password",
       });
     }
-<<<<<<< HEAD
     generateToken(res, user, `Welcome back ${user.name}`);
   } catch (error) {
     console.log(error);
@@ -186,6 +149,3 @@ export const updateProfile = async (req, res) => {
     });
   }
 };
-=======
-}
->>>>>>> 01a14b37b03e661663f5bf8ef2180f27ea3b9513
