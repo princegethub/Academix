@@ -36,6 +36,20 @@ app.use("/api/v1/course", courseRoute);
 app.use("/api/v1/purchase", purchaseRoute);
 app.use("/api/v1/progress", courseProgressRoute);
 
+
+
+
+app.use((req, res, next) => {
+  const timestamp = new Date().toISOString();
+  const method = req.method; // HTTP method (GET, POST, etc.)
+  const url = req.url; // Requested URL
+  const ip = req.ip; // Requester's IP address
+
+  console.log(`[${timestamp}] ${method} request to ${url} from IP: ${ip}`);
+  next();
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server listen at port ${PORT}`);
 });
